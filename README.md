@@ -2,6 +2,5 @@
 a collection of roblox ui libs, made by me
 # Lite XXS
 <p align="center">
-  <img src="your_relative_path_here" width="350" title="hover text">
-  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
+  <img src="https://github.com/Zartoooo/roblox-uis/blob/main/lite_xxs_preview.png?raw=true" width="350" alt="Preview">
 </p>
