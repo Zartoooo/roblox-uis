@@ -55,6 +55,10 @@ function Lib:CreateToggle(flag, cfg)
     table.insert(Lib.Toggles, Toggle)
     Lib.Flags[flag] = Toggle
 
+    if #Lib.Toggles == 1 then
+        Lib.PointerIdx = 1
+    end
+
     Lib:update_display()
     return Toggle
 end
@@ -80,22 +84,19 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
     end
 
     if not Lib.Active then return end
+    if #Lib.Toggles == 0 then return end
 
     if input.KeyCode == Enum.KeyCode.Up then
-        Lib.PointerIdx = Lib.PointerIdx - 1
-        if Lib.PointerIdx < 1 then
-            Lib.PointerIdx = #Lib.Toggles
-        end
+        Lib.PointerIdx = (Lib.PointerIdx - 2 + #Lib.Toggles) % #Lib.Toggles + 1
         Lib:update_display()
     elseif input.KeyCode == Enum.KeyCode.Down then
-        Lib.PointerIdx = Lib.PointerIdx + 1
-        if Lib.PointerIdx > #Lib.Toggles then
-            Lib.PointerIdx = 1
-        end
+        Lib.PointerIdx = (Lib.PointerIdx % #Lib.Toggles) + 1
         Lib:update_display()
     elseif input.KeyCode == Enum.KeyCode.Return then
         local selectedToggle = Lib.Toggles[Lib.PointerIdx]
-        selectedToggle:SetValue(not selectedToggle.Value)
+        if selectedToggle then
+            selectedToggle:SetValue(not selectedToggle.Value)
+        end
     end
 end)
 
