@@ -1,4 +1,4 @@
---made by Zarto in 30min w/ chatgpt.
+--made by Zarto in 30min
 --date: 29/03/2025
 
 local UserInputService = game:GetService("UserInputService")
